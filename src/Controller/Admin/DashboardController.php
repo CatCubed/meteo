@@ -13,7 +13,8 @@ class DashboardController extends AbstractDashboardController
 {
     public function index(): Response
     {
-        return parent::index();
+        //return parent::index();
+        return $this->render('admin/admin_dashboard.html.twig', []);
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+//        yield MenuItem::linkToCrud('Test', null, 'Tests');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
