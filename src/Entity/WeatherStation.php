@@ -121,4 +121,9 @@ class WeatherStation
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->name ?? 'Weather Station '.$this->id;
+    }
 }
