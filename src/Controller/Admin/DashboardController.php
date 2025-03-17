@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Measurement;
 use App\Entity\WeatherStation;
+use App\Repository\MeasurementRepository;
+use App\Repository\WeatherStationRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,9 +15,20 @@ use Symfony\Component\HttpFoundation\Response;
 #[AdminDashboard(routePath: '/', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+    function __construct(
+        private WeatherStationRepository $weatherStationRepository,
+        private MeasurementRepository $measurementRepository,
+    )
+    {
+
+    }
+
     public function index(): Response
     {
-        return $this->render('admin/admin_dashboard.html.twig', []);
+        return $this->render('admin/admin_dashboard.html.twig', [
+            'weatherStations' => $this->weatherStationRepository->findAll(),
+            'measurements' => $this->measurementRepository->findAll(),
+        ]);
     }
 
     public function configureDashboard(): Dashboard
