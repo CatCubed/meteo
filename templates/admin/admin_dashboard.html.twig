@@ -1,6 +1,15 @@
 {# templates/admin/admin_dashboard.html.twig #}
 {% extends '@EasyAdmin/layout.html.twig' %}
 
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{% endblock %}
+
 {% block main %}
-    <h1>TEST</h1>
+    {% for weatherStation in weatherStations %}
+        <li>{{ weatherStation.name }}</li>
+    {% endfor %}
+    {% for measurement in measurements %}
+        <li>{{ measurement.name }}</li>
+    {% endfor %}
 {% endblock main %}
