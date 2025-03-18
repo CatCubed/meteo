@@ -75,5 +75,6 @@ class MeasurementCrudController extends AbstractCrudController
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $entityManager->persist($entityInstance);
+        $entityManager->flush();
     }
 }

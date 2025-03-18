@@ -67,5 +67,6 @@ class WeatherStationCrudController extends AbstractCrudController
     {
         $entityInstance->setUpdatedAt(new \DateTime());
         $entityManager->persist($entityInstance);
+        $entityManager->flush();
     }
 }
