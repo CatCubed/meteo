@@ -43,9 +43,6 @@ class MeasurementCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('weatherStation'),
-            TextField::new('name'),
-            TextField::new('domain'),
-            TextField::new('placement'),
 
             NumberField::new('temperature'),
             NumberField::new('humidity'),
