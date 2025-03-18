@@ -29,7 +29,6 @@ class MeasurementCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('Measurement')
             ->setEntityLabelInPlural('Measurements')
-            ->setSearchFields(['name', 'domain', 'placement'])
             ->setDefaultSort(['createdAt' => 'DESC']);
     }
 
@@ -49,27 +48,10 @@ class MeasurementCrudController extends AbstractCrudController
             TextField::new('placement'),
 
             NumberField::new('temperature'),
-            TextField::new('temperatureUnit'),
-            NumberField::new('lowestTemp'),
-            NumberField::new('highestTemp'),
-
             NumberField::new('humidity'),
-            TextField::new('humidityUnit'),
-            NumberField::new('lowestHumidity'),
-            NumberField::new('highestHumidity'),
-
             NumberField::new('pressure'),
-            TextField::new('pressureUnit'),
-            NumberField::new('lowestPressure'),
-            NumberField::new('highestPressure'),
-
-            NumberField::new('rssi'),
-            NumberField::new('voltage'),
 
             DateTimeField::new('createdAt')
-                ->hideOnForm()
-                ->setFormTypeOption('disabled', true),
-            DateTimeField::new('updatedAt')
                 ->hideOnForm()
                 ->setFormTypeOption('disabled', true),
         ];
@@ -86,14 +68,12 @@ class MeasurementCrudController extends AbstractCrudController
     {
         $measurement = new Measurement();
         $measurement->setCreatedAt(new \DateTime());
-        $measurement->setUpdatedAt(new \DateTime());
 
         return $measurement;
     }
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        $entityInstance->setUpdatedAt(new \DateTime());
         $entityManager->persist($entityInstance);
     }
 }
