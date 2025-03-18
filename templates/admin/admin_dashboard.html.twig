@@ -1,8 +1,10 @@
 {# templates/admin/admin_dashboard.html.twig #}
 {% extends '@EasyAdmin/layout.html.twig' %}
 
-{% block javascripts %}
+{% block body_javascript %}
+    {{ parent() }}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -12,4 +14,5 @@
     {% for measurement in measurements %}
         <li>{{ measurement.name }}</li>
     {% endfor %}
+    <div id="chart"></div>
 {% endblock main %}
