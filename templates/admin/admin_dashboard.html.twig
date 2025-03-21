@@ -25,28 +25,25 @@
             <div class="greeting-header">
                 <div class="greeting-text">
                     <h1>Hello! Welcome to the Weather Dashboard</h1>
-                    <p>Monitoring station: <strong>{{ weather_station_name }}</strong></p>
-                    <p>Last updated: <span id="lastUpdated"></span></p>
+                    <p class="station-info">Monitoring Station: <strong>{{ weather_station_name }}</strong></p>
+                    <p class="station-info">Last Updated: <span id="lastUpdated"></span></p>
+
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <div class="label">Temperature</div>
+                            <div class="value"><span id="currentTemp"></span>°C</div>
+                        </div>
+                        <div class="weather-detail">
+                            <div class="label">Humidity</div>
+                            <div class="value"><span id="currentHumidity"></span>%</div>
+                        </div>
+                        <div class="weather-detail">
+                            <div class="label">Pressure</div>
+                            <div class="value"><span id="currentPressure"></span> hPa</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="weather-emoji" id="weatherEmoji"></div>
-            </div>
-
-            <div class="current-stats">
-                <div class="stat-item">
-                    <div class="stat-label">Temperature</div>
-                    <div class="stat-value" id="currentTemp"></div>
-                    <div class="stat-unit">°C</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Humidity</div>
-                    <div class="stat-value" id="currentHumidity"></div>
-                    <div class="stat-unit">%</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Pressure</div>
-                    <div class="stat-value" id="currentPressure"></div>
-                    <div class="stat-unit">hPa</div>
-                </div>
             </div>
         </div>
 
