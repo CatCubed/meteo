@@ -1,11 +1,9 @@
 /* Weather Tile CSS */
 .content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 10px;
 }
 
 .weather-tile {
@@ -14,7 +12,8 @@
     padding: 20px;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
-    width: 100%;
+    margin-bottom: 0;
+    flex: 1 1 100%;
     min-height: 180px;
     display: flex;
     flex-direction: column;
@@ -62,7 +61,7 @@
 /* Measurement Chart Tiles */
 .measurement-tiles {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
     width: 100%;
 }
@@ -70,9 +69,10 @@
 .measurement-tile {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 25px;
+    padding: 15px;
     color: white;
-    width: 100%;
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
 }
 
 .temperature-tile {
@@ -88,27 +88,33 @@
 }
 
 .measurement-tile .measurement-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
 }
 
 .measurement-tile .measurement-icon {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin-right: 0.5rem;
 }
 
 .measurement-tile .measurement-value {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .measurement-tile .chart-container {
-    height: 300px;
-    margin-top: 10px;
+    height: 180px;
+    margin-top: 5px;
+}
+
+@media (max-width: 1200px) {
+    .measurement-tile {
+        flex: 1 1 calc(50% - 20px);
+    }
 }
 
 @media (max-width: 768px) {
@@ -120,7 +126,7 @@
         margin-bottom: 10px;
     }
 
-    .measurement-tile .chart-container {
-        height: 250px;
+    .measurement-tile {
+        flex: 1 1 100%;
     }
 }

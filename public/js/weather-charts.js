@@ -61,7 +61,7 @@ function initTemperatureChart() {
             data: tempData
         }],
         chart: {
-            height: 300,
+            height: 180,
             type: 'line',
             zoom: {
                 enabled: false
@@ -71,15 +71,6 @@ function initTemperatureChart() {
             },
             fontFamily: 'inherit',
             background: 'transparent'
-        },
-        title: {
-            text: 'Last 24 Hours',
-            align: 'center',
-            style: {
-                fontSize: '14px',
-                color: '#fff',
-                opacity: 0.7
-            }
         },
         stroke: {
             curve: 'smooth',
@@ -91,18 +82,10 @@ function initTemperatureChart() {
             row: {
                 colors: ['transparent'],
                 opacity: 0.5
-            },
-            padding: {
-                left: 15,
-                right: 15
             }
         },
         markers: {
-            size: 3,
-            strokeWidth: 0,
-            hover: {
-                size: 5
-            }
+            size: 0
         },
         xaxis: {
             categories: timeLabels,
@@ -110,13 +93,21 @@ function initTemperatureChart() {
                 style: {
                     colors: '#fff',
                     opacity: 0.7
-                }
+                },
+                show: true,
+                rotate: 0,
+                trim: true,
+                hideOverlappingLabels: true,
+                maxHeight: 50
             },
             axisBorder: {
                 show: false
             },
             axisTicks: {
                 show: false
+            },
+            tooltip: {
+                enabled: false
             }
         },
         yaxis: {
@@ -158,7 +149,7 @@ function initHumidityChart() {
             data: humidityData
         }],
         chart: {
-            height: 300,
+            height: 240,
             type: 'line',
             zoom: {
                 enabled: false
@@ -168,15 +159,6 @@ function initHumidityChart() {
             },
             fontFamily: 'inherit',
             background: 'transparent'
-        },
-        title: {
-            text: 'Last 24 Hours',
-            align: 'center',
-            style: {
-                fontSize: '14px',
-                color: '#fff',
-                opacity: 0.7
-            }
         },
         stroke: {
             curve: 'smooth',
@@ -188,18 +170,10 @@ function initHumidityChart() {
             row: {
                 colors: ['transparent'],
                 opacity: 0.5
-            },
-            padding: {
-                left: 15,
-                right: 15
             }
         },
         markers: {
-            size: 3,
-            strokeWidth: 0,
-            hover: {
-                size: 5
-            }
+            size: 0
         },
         xaxis: {
             categories: timeLabels,
@@ -207,13 +181,21 @@ function initHumidityChart() {
                 style: {
                     colors: '#fff',
                     opacity: 0.7
-                }
+                },
+                show: true,
+                rotate: 0,
+                trim: true,
+                hideOverlappingLabels: true,
+                maxHeight: 50
             },
             axisBorder: {
                 show: false
             },
             axisTicks: {
                 show: false
+            },
+            tooltip: {
+                enabled: false
             }
         },
         yaxis: {
@@ -255,7 +237,7 @@ function initPressureChart() {
             data: pressureData
         }],
         chart: {
-            height: 300,
+            height: 240,
             type: 'line',
             zoom: {
                 enabled: false
@@ -265,15 +247,6 @@ function initPressureChart() {
             },
             fontFamily: 'inherit',
             background: 'transparent'
-        },
-        title: {
-            text: 'Last 24 Hours',
-            align: 'center',
-            style: {
-                fontSize: '14px',
-                color: '#fff',
-                opacity: 0.7
-            }
         },
         stroke: {
             curve: 'smooth',
@@ -285,18 +258,10 @@ function initPressureChart() {
             row: {
                 colors: ['transparent'],
                 opacity: 0.5
-            },
-            padding: {
-                left: 15,
-                right: 15
             }
         },
         markers: {
-            size: 3,
-            strokeWidth: 0,
-            hover: {
-                size: 5
-            }
+            size: 0
         },
         xaxis: {
             categories: timeLabels,
@@ -304,13 +269,21 @@ function initPressureChart() {
                 style: {
                     colors: '#fff',
                     opacity: 0.7
-                }
+                },
+                show: true,
+                rotate: 0,
+                trim: true,
+                hideOverlappingLabels: true,
+                maxHeight: 50
             },
             axisBorder: {
                 show: false
             },
             axisTicks: {
                 show: false
+            },
+            tooltip: {
+                enabled: false
             }
         },
         yaxis: {
