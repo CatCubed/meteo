@@ -1,0 +1,58 @@
+/* Weather Tile CSS */
+.weather-tile {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+.weather-tile .greeting {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.weather-tile .date {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.weather-tile .weather-emoji {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.weather-tile .weather-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-tile .weather-data {
+    text-align: center;
+    flex: 1;
+}
+
+.weather-tile .weather-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.weather-tile .weather-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 500px) {
+    .weather-tile .weather-info {
+        flex-direction: column;
+    }
+
+    .weather-tile .weather-data {
+        margin-bottom: 10px;
+    }
+}

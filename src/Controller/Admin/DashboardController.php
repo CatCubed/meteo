@@ -28,6 +28,7 @@ class DashboardController extends AbstractDashboardController
         return $this->render('admin/admin_dashboard.html.twig', [
             'weatherStations' => $this->weatherStationRepository->findAll(),
             'measurements' => $this->measurementRepository->findAll(),
+            'latestMeasurement' => $this->measurementRepository->getLatestMeasurements(),
         ]);
     }
 
