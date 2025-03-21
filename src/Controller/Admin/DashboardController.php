@@ -51,21 +51,6 @@ class DashboardController extends AbstractDashboardController
         ]);
     }
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('Weather Station Monitoring');
-    }
-
-    public function configureMenuItems(): iterable
-    {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-
-        yield MenuItem::section('Data');
-        yield MenuItem::linkToCrud('Weather Stations', 'fa fa-satellite-dish', WeatherStation::class);
-        yield MenuItem::linkToCrud('Measurements', 'fa fa-thermometer-half', Measurement::class);
-    }
-
     private function getHistoricalData(): array
     {
         // Get measurements for the last 7 days
@@ -99,5 +84,22 @@ class DashboardController extends AbstractDashboardController
             'humidity' => $humidityData,
             'pressure' => $pressureData
         ];
+    }
+
+    public function configureDashboard(): Dashboard
+    {
+        return Dashboard::new()
+            ->setTitle('Weather Station Monitoring');
+    }
+
+    public function configureMenuItems(): iterable
+    {
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::linkToRoute('Historical Data', 'fa fa-chart-line', 'admin_historical');
+
+        yield MenuItem::section('Data');
+        yield MenuItem::linkToCrud('Weather Stations', 'fa fa-satellite-dish', WeatherStation::class);
+        yield MenuItem::linkToCrud('Measurements', 'fa fa-thermometer-half', Measurement::class);
     }
 }

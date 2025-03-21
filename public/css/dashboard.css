@@ -68,6 +68,60 @@
     margin-top: 20px;
 }
 
+/* Historical page styles */
+.comparison-section {
+    margin-bottom: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-comparison-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comparison-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.comparison-column {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.comparison-column h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: #666;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #333;
+}
+
 @media (max-width: 768px) {
     .greeting-header {
         flex-direction: column;

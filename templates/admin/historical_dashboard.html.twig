@@ -1,0 +1,168 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block head_stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{% endblock %}
+
+{% block body_javascript %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        // Pass data from Twig to JavaScript
+        const weatherStationName = "{{ weather_station_name }}";
+        const todayData = {{ today_data|json_encode|raw }};
+        const yesterdayData = {{ yesterday_data|json_encode|raw }};
+        const monthlyData = {{ monthly_data|json_encode|raw }};
+        const yearlyData = {{ yearly_data|json_encode|raw }};
+    </script>
+    <script src="{{ asset('js/historical.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="weather-dashboard">
+        <div class="greeting-card">
+            <div class="greeting-header">
+                <div class="greeting-text">
+                    <h1>Historical Weather Data</h1>
+                    <p>Monitoring station: <strong>{{ weather_station_name }}</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h2>Today vs Yesterday Comparison</h2>
+
+            <div class="stats-grid">
+                <div class="stat-comparison-card">
+                    <h3>Temperature</h3>
+                    <div class="comparison-stats">
+                        <div class="comparison-column">
+                            <h4>Today ({{ today_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ today_data.temperature.avg|number_format(1) }}°C</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ today_data.temperature.min|number_format(1) }}°C</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ today_data.temperature.max|number_format(1) }}°C</span>
+                            </div>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ yesterday_data.temperature.avg|number_format(1) }}°C</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ yesterday_data.temperature.min|number_format(1) }}°C</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ yesterday_data.temperature.max|number_format(1) }}°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-comparison-card">
+                    <h3>Humidity</h3>
+                    <div class="comparison-stats">
+                        <div class="comparison-column">
+                            <h4>Today ({{ today_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ today_data.humidity.avg|number_format(1) }}%</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ today_data.humidity.min|number_format(1) }}%</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ today_data.humidity.max|number_format(1) }}%</span>
+                            </div>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ yesterday_data.humidity.avg|number_format(1) }}%</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ yesterday_data.humidity.min|number_format(1) }}%</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ yesterday_data.humidity.max|number_format(1) }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-comparison-card">
+                    <h3>Pressure</h3>
+                    <div class="comparison-stats">
+                        <div class="comparison-column">
+                            <h4>Today ({{ today_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ today_data.pressure.avg|number_format(1) }} hPa</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ today_data.pressure.min|number_format(1) }} hPa</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ today_data.pressure.max|number_format(1) }} hPa</span>
+                            </div>
+                        </div>
+                        <div class="comparison-column">
+                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <div class="stat-row">
+                                <span class="stat-label">Average:</span>
+                                <span class="stat-value">{{ yesterday_data.pressure.avg|number_format(1) }} hPa</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Min:</span>
+                                <span class="stat-value">{{ yesterday_data.pressure.min|number_format(1) }} hPa</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Max:</span>
+                                <span class="stat-value">{{ yesterday_data.pressure.max|number_format(1) }} hPa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h2>Daily Comparison</h2>
+                <div id="dailyComparisonChart"></div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h2>Monthly Trends</h2>
+                <div id="monthlyTrendsChart"></div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h2>Yearly Trends</h2>
+                <div id="yearlyTrendsChart"></div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
