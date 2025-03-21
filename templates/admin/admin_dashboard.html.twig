@@ -1,46 +1,14 @@
 {% extends '@EasyAdmin/layout.html.twig' %}
 
-{% block head_stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/weather-tile.css') }}">
-{% endblock %}
-
 {% block body_javascript %}
     {{ parent() }}
-    <script src="{{ asset('js/weather-tile.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
 {% endblock %}
 
 {% block main %}
-    <div class="content-wrapper">
-        {% set measurement = measurements|last %}
-        {% if measurement %}
-            <div class="weather-tile">
-                <div class="greeting" id="greeting">Good day</div>
-                <div class="date" id="current-date">Today's date</div>
-                <div class="weather-emoji" id="weather-emoji">🌤️</div>
-                <div class="weather-info">
-                    <div class="weather-data">
-                        <div class="weather-value" id="temperature-value" data-value="{{ measurement.temperature }}">
-                            {{ measurement.temperature }}°C
-                        </div>
-                        <div class="weather-label">Temperature</div>
-                    </div>
-                    <div class="weather-data">
-                        <div class="weather-value" id="humidity-value" data-value="{{ measurement.humidity }}">
-                            {{ measurement.humidity }}%
-                        </div>
-                        <div class="weather-label">Humidity</div>
-                    </div>
-                    <div class="weather-data">
-                        <div class="weather-value" id="pressure-value" data-value="{{ measurement.pressure }}">
-                            {{ measurement.pressure }} hPa
-                        </div>
-                        <div class="weather-label">Pressure</div>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div class="alert alert-info">No weather data available</div>
-        {% endif %}
-    </div>
+    {% for weatherStation in weatherStations %}
+        <h1>{{ weatherStation.name }}</h1>
+    {% endfor %}
+    <div id="chart"></div>
 {% endblock main %}
