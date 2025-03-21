@@ -38,7 +38,7 @@
                     <h3>Temperature</h3>
                     <div class="comparison-stats">
                         <div class="comparison-column">
-                            <h4>Today ({{ today_data.date }})</h4>
+                            <h4>{{ today_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ today_data.temperature.avg|number_format(1) }}°C</span>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="comparison-column">
-                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <h4>{{ yesterday_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ yesterday_data.temperature.avg|number_format(1) }}°C</span>
@@ -74,7 +74,7 @@
                     <h3>Humidity</h3>
                     <div class="comparison-stats">
                         <div class="comparison-column">
-                            <h4>Today ({{ today_data.date }})</h4>
+                            <h4>{{ today_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ today_data.humidity.avg|number_format(1) }}%</span>
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="comparison-column">
-                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <h4>{{ yesterday_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ yesterday_data.humidity.avg|number_format(1) }}%</span>
@@ -110,7 +110,7 @@
                     <h3>Pressure</h3>
                     <div class="comparison-stats">
                         <div class="comparison-column">
-                            <h4>Today ({{ today_data.date }})</h4>
+                            <h4>{{ today_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ today_data.pressure.avg|number_format(1) }} hPa</span>
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <div class="comparison-column">
-                            <h4>Yesterday ({{ yesterday_data.date }})</h4>
+                            <h4>{{ yesterday_data.date }}</h4>
                             <div class="stat-row">
                                 <span class="stat-label">Average:</span>
                                 <span class="stat-value">{{ yesterday_data.pressure.avg|number_format(1) }} hPa</span>

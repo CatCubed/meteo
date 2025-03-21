@@ -50,6 +50,24 @@ class HistoricalController extends AbstractDashboardController
         ]);
     }
 
+    private function formatDate(\DateTime $date, bool $includeDay = true): string
+    {
+        if ($includeDay) {
+            // Format for today/yesterday with day name
+            $today = new \DateTime('today');
+            $yesterday = new \DateTime('yesterday');
+
+            if ($date->format('Y-m-d') === $today->format('Y-m-d')) {
+                return 'Today, ' . $date->format('F j');
+            } elseif ($date->format('Y-m-d') === $yesterday->format('Y-m-d')) {
+                return 'Yesterday, ' . $date->format('F j');
+            }
+        }
+
+        // Standard date formatting
+        return $date->format('F j');
+    }
+
     private function getDailyData(int $daysAgo): array
     {
         $date = new \DateTime();
@@ -85,7 +103,8 @@ class HistoricalController extends AbstractDashboardController
         }
 
         return [
-            'date' => $date->format('Y-m-d'),
+            'date' => $this->formatDate($date),
+            'date_raw' => $date->format('Y-m-d'),
             'temperature' => [
                 'values' => $temperatureValues,
                 'avg' => !empty($temperatureValues) ? array_sum($temperatureValues) / count($temperatureValues) : 0,
@@ -167,12 +186,27 @@ class HistoricalController extends AbstractDashboardController
         ];
 
         foreach ($groupedData as $periodKey => $data) {
-            $result['labels'][] = $periodKey;
+            $result['labels'][] = $this->formatPeriodLabel($periodKey, $format);
             $result['temperature'][] = !empty($data['temperature']) ? array_sum($data['temperature']) / count($data['temperature']) : 0;
             $result['humidity'][] = !empty($data['humidity']) ? array_sum($data['humidity']) / count($data['humidity']) : 0;
             $result['pressure'][] = !empty($data['pressure']) ? array_sum($data['pressure']) / count($data['pressure']) : 0;
         }
 
         return $result;
+    }
+
+    private function formatPeriodLabel(string $key, string $format): string
+    {
+        if ($format === 'Y-m-d') {
+            // For daily format
+            $date = \DateTime::createFromFormat('Y-m-d', $key);
+            return $this->formatDate($date, true);
+        } elseif ($format === 'Y-m') {
+            // For monthly format
+            $date = \DateTime::createFromFormat('Y-m', $key);
+            return $date->format('F Y');
+        }
+
+        return $key;
     }
 }
