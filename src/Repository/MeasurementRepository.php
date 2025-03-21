@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Measurement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
 
 /**
  * @extends ServiceEntityRepository<Measurement>
@@ -17,9 +18,9 @@ class MeasurementRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Measurement
+     * @return Measurement|null
      */
-    public function getLatestMeasurements(): Measurement
+    public function getLatestMeasurements(): ?Measurement
     {
         return $this->createQueryBuilder('m')
             ->orderBy('m.createdAt', 'DESC')
@@ -29,37 +30,20 @@ class MeasurementRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return float[]
+     * Get measurements for the last N days
+     *
+     * @param int $days Number of days to retrieve data for
+     * @return array
      */
-    public function getTemperatureArray(): array
+    public function getMeasurementsForLastDays(int $days = 7): array
     {
-        return $this->createQueryBuilder('m')
-            ->select('m.temperature')
-            ->orderBy('m.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
-    }
+        $date = new DateTime();
+        $date->modify("-{$days} days");
 
-    /**
-     * @return float[]
-     */
-    public function getHumidityArray(): array
-    {
         return $this->createQueryBuilder('m')
-            ->select('m.humidity')
-            ->orderBy('m.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
-    }
-
-    /**
-     * @return float[]
-     */
-    public function getPressureArray(): array
-    {
-        return $this->createQueryBuilder('m')
-            ->select('m.pressure')
-            ->orderBy('m.createdAt', 'DESC')
+            ->where('m.createdAt >= :date')
+            ->setParameter('date', $date)
+            ->orderBy('m.createdAt', 'ASC')
             ->getQuery()
             ->getResult();
     }
