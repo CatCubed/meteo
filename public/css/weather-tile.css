@@ -1,23 +1,12 @@
 /* Weather Tile CSS */
-.content-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px;
-}
-
 .weather-tile {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
-    margin-bottom: 0;
-    flex: 1 1 100%;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-bottom: 30px;
+    max-width: 400px;
 }
 
 .weather-tile .greeting {
@@ -33,9 +22,9 @@
 }
 
 .weather-tile .weather-emoji {
-    font-size: 3.5rem;
+    font-size: 4rem;
+    text-align: center;
     margin-bottom: 1rem;
-    align-self: center;
 }
 
 .weather-tile .weather-info {
@@ -58,75 +47,12 @@
     opacity: 0.8;
 }
 
-/* Measurement Chart Tiles */
-.measurement-tiles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: 100%;
-}
-
-.measurement-tile {
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    color: white;
-    flex: 1 1 calc(33.333% - 20px);
-    min-width: 250px;
-}
-
-.temperature-tile {
-    background: linear-gradient(135deg, #FF5F6D 0%, #FFC371 100%);
-}
-
-.humidity-tile {
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-}
-
-.pressure-tile {
-    background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%);
-}
-
-.measurement-tile .measurement-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-
-.measurement-tile .measurement-icon {
-    font-size: 1.4rem;
-    margin-right: 0.5rem;
-}
-
-.measurement-tile .measurement-value {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.measurement-tile .chart-container {
-    height: 180px;
-    margin-top: 5px;
-}
-
-@media (max-width: 1200px) {
-    .measurement-tile {
-        flex: 1 1 calc(50% - 20px);
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .weather-tile .weather-info {
         flex-direction: column;
     }
 
     .weather-tile .weather-data {
         margin-bottom: 10px;
-    }
-
-    .measurement-tile {
-        flex: 1 1 100%;
     }
 }
