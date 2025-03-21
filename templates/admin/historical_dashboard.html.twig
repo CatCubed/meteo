@@ -24,14 +24,29 @@
         <div class="greeting-card">
             <div class="greeting-header">
                 <div class="greeting-text">
-                    <h1>Historical Weather Data</h1>
-                    <p>Monitoring station: <strong>{{ weather_station_name }}</strong></p>
+                    <h1>Historical Weather Insights</h1>
+                    <p class="station-info">Monitoring Station: {{ weather_station_name }}</p>
+
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <div class="label">Avg Temperature</div>
+                            <div class="value">{{ today_data.temperature.avg|number_format(1) }}°C</div>
+                        </div>
+                        <div class="weather-detail">
+                            <div class="label">Avg Humidity</div>
+                            <div class="value">{{ today_data.humidity.avg|number_format(1) }}%</div>
+                        </div>
+                        <div class="weather-detail">
+                            <div class="label">Avg Pressure</div>
+                            <div class="value">{{ today_data.pressure.avg|number_format(1) }} hPa</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="comparison-section">
-            <h2>Today vs Yesterday Comparison</h2>
+            <h2>Daily Comparison</h2>
 
             <div class="stats-grid">
                 <div class="stat-comparison-card">
