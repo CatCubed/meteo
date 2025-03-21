@@ -7,7 +7,9 @@
 
 {% block body_javascript %}
     {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="{{ asset('js/weather-tile.js') }}"></script>
+    <script src="{{ asset('js/weather-charts.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -15,8 +17,10 @@
         {% set measurement = measurements|last %}
         {% if measurement %}
             <div class="weather-tile">
-                <div class="greeting" id="greeting">Good day</div>
-                <div class="date" id="current-date">Today's date</div>
+                <div>
+                    <div class="greeting" id="greeting">Good day</div>
+                    <div class="date" id="current-date">Today's date</div>
+                </div>
                 <div class="weather-emoji" id="weather-emoji">🌤️</div>
                 <div class="weather-info">
                     <div class="weather-data">
@@ -37,6 +41,38 @@
                         </div>
                         <div class="weather-label">Pressure</div>
                     </div>
+                </div>
+            </div>
+
+            <div class="measurement-tiles">
+                {# Temperature Chart Tile #}
+                <div class="measurement-tile temperature-tile">
+                    <div class="measurement-title">
+                        <span class="measurement-icon">🌡️</span>
+                        Temperature
+                    </div>
+                    <div class="measurement-value">{{ measurement.temperature }}°C</div>
+                    <div class="chart-container" id="temperature-chart"></div>
+                </div>
+
+                {# Humidity Chart Tile #}
+                <div class="measurement-tile humidity-tile">
+                    <div class="measurement-title">
+                        <span class="measurement-icon">💧</span>
+                        Humidity
+                    </div>
+                    <div class="measurement-value">{{ measurement.humidity }}%</div>
+                    <div class="chart-container" id="humidity-chart"></div>
+                </div>
+
+                {# Pressure Chart Tile #}
+                <div class="measurement-tile pressure-tile">
+                    <div class="measurement-title">
+                        <span class="measurement-icon">🧭</span>
+                        Pressure
+                    </div>
+                    <div class="measurement-value">{{ measurement.pressure }} hPa</div>
+                    <div class="chart-container" id="pressure-chart"></div>
                 </div>
             </div>
         {% else %}
