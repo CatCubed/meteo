@@ -56,11 +56,21 @@ function createDailyComparisonChart() {
         yaxis: {
             title: {
                 text: 'Temperature (°C)'
+            },
+            labels: {
+                formatter: function(val) {
+                    return Math.round(val);
+                }
             }
         },
         tooltip: {
             shared: true,
-            intersect: false
+            intersect: false,
+            y: {
+                formatter: function(val) {
+                    return val.toFixed(1) + '°C';
+                }
+            }
         },
         colors: ['#f44336', '#FF9800']
     };
@@ -111,11 +121,40 @@ function createMonthlyTrendsChart() {
         xaxis: {
             categories: monthlyData.labels
         },
-        yaxis: {
-            title: {
-                text: 'Value'
+        yaxis: [
+            {
+                title: {
+                    text: 'Temperature (°C)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val);
+                    }
+                }
+            },
+            {
+                opposite: true,
+                title: {
+                    text: 'Humidity (%)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val);
+                    }
+                }
+            },
+            {
+                opposite: true,
+                title: {
+                    text: 'Pressure (hPa)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val * 10);
+                    }
+                }
             }
-        },
+        ],
         tooltip: {
             y: {
                 formatter: function(value, { seriesIndex }) {
@@ -181,11 +220,40 @@ function createYearlyTrendsChart() {
         xaxis: {
             categories: yearlyData.labels
         },
-        yaxis: {
-            title: {
-                text: 'Value'
+        yaxis: [
+            {
+                title: {
+                    text: 'Temperature (°C)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val);
+                    }
+                }
+            },
+            {
+                opposite: true,
+                title: {
+                    text: 'Humidity (%)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val);
+                    }
+                }
+            },
+            {
+                opposite: true,
+                title: {
+                    text: 'Pressure (hPa)'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return Math.round(val * 10);
+                    }
+                }
             }
-        },
+        ],
         tooltip: {
             y: {
                 formatter: function(value, { seriesIndex }) {
